@@ -11,7 +11,7 @@ interface TextImageProps {
   };
 }
 
-const TextImage = ({ orientation, image, content }: TextImageProps) => {
+const TextImage = ({ orientation, image }: TextImageProps) => {
   return (
     <Section>
       <Container>

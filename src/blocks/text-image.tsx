@@ -1,17 +1,20 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { urlFor } from "@/sanity/image";
 import clsx from "clsx";
+import { PortableText, type PortableTextBlock } from "next-sanity";
 import Image from "next/image";
 
 interface TextImageProps {
-  orientation: "left" | "right";
-  image: {
-    src: string;
-    alt: string;
-  };
+  imageFirst: boolean;
+  content: PortableTextBlock;
+  image: any;
 }
 
-const TextImage = ({ orientation, image }: TextImageProps) => {
+const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
+  const imageUrl = urlFor(image.asset).url()
+
+
   return (
     <Section>
       <Container>
@@ -19,41 +22,24 @@ const TextImage = ({ orientation, image }: TextImageProps) => {
           <div
             className={clsx(
               "col-span-12 md:col-span-6",
-              orientation === "left" ? "order-2" : "order-1"
+              imageFirst ? "order-2" : "order-1"
             )}
           >
             <Image
-              {...image}
-              width={400}
+              src={imageUrl} 
+              alt={image.asset.alt || "image"}
+              width={550}
               height={240}
-              className="aspect-video object-cover"
+              className="aspect-video w-full object-cover"
             />
           </div>
           <div
             className={clsx(
               "col-span-12 md:col-span-6",
-              orientation === "left" ? "order-1" : "order-2"
+              imageFirst ? "order-1" : "order-2"
             )}
           >
-            <h2 className="font-bold text-3xl mb-4">
-              Lorem ipsum dolor sit amet.
-            </h2>
-            <p className="text-gray-600 mb-4">
-              Sint ea qui nostrud eiusmod laboris duis proident cupidatat
-              pariatur commodo incididunt fugiat. Cillum minim occaecat ipsum ex
-              tempor irure consectetur.
-            </p>
-            <p className="text-gray-600 mb-4">
-              Lorem aliqua eiusmod culpa ea sunt ex qui dolor qui laborum
-              aliquip sunt ea. Eiusmod do deserunt magna cillum sint laboris
-              culpa aliquip ex. Incididunt eiusmod Lorem nulla esse enim dolore
-              voluptate laborum aute.
-            </p>
-            <ul className="flex flex-col gap-2 list-disc pl-4 text-gray-600">
-              <li>
-                Do cupidatat pariatur eiusmod consequat est do consequat in id.
-              </li>
-            </ul>
+            <PortableText value={content} />
           </div>
         </div>
       </Container>

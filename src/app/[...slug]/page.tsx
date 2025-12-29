@@ -3,19 +3,55 @@ import { Hero } from "@/blocks/hero";
 import { Services } from "@/blocks/services";
 import { Slogan } from "@/blocks/slogan";
 import { TextImage } from "@/blocks/text-image";
+import { sanityFetch } from "@/sanity/live";
+import { defineQuery, SanityDocument } from "next-sanity";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+const query = defineQuery(
+  `*[_type == "pages" && slug.current == $slug][0] {
+    "imageUrl": image.asset->url,
+    title,
+    slug,
+    content
+  }`
+);
+
+const blockMapper: Record<string, any> = {
+  sloganBlock: Slogan,
+  textMediaBlock: TextImage,
+  servicesBlock: Services,
+  contactFormBlock: Contact
+};
+
+const BlockRenderer = (content: any) => {
+  console.log();
+  // return 1;
+  return content.content.map((c: SanityDocument) => {
+    const Component = blockMapper[c._type] || null;
+
+    if (Component) {
+      return <Component {...c} key={c._key} />;
+    }
+  });
+};
+
+export default async ({ params }: { params: Promise<{ slug: string[] }> }) => {
+  const { slug } = await params;
+  const { data } = await sanityFetch({
+    query,
+    params: {
+      slug: slug[0],
+    },
+  });
+
+  if (!data) {
+    return;
+  }
+
   return (
     <main className="justify-center bg-slate-50 font-sans dark:bg-black">
-      <TextImage
-        image={{ alt: "yoga", src: "/yoga-2.jpg" }}
-        orientation="left"
-      />
-      <Contact
-        title="Contact"
-        description="Consectetur cupidatat tempor ipsum cillum id et nisi."
-        image={{ src: "/yoga-3.jpg", alt: "yoga" }}
-      />
+      <Hero image={{ src: data.imageUrl, alt: data.title }} />
+      <BlockRenderer content={data.content} />
     </main>
   );
-}
+};

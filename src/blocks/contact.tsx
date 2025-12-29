@@ -20,14 +20,12 @@ import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { urlFor } from "@/sanity/image";
 
 interface ContactProps {
-  title: string;
+  heading: string;
   description: string;
-  image: {
-    src: string;
-    alt: string;
-  };
+  image: any;
 }
 
 const formSchema = z.object({
@@ -72,7 +70,6 @@ const ContactForm = ({
             <FormControl>
               <Input {...field} />
             </FormControl>
-            <FormDescription>This is your public display name.</FormDescription>
             <FormMessage />
           </FormItem>
         )}
@@ -84,7 +81,7 @@ const ContactForm = ({
           <FormItem>
             <FormLabel>Message</FormLabel>
             <FormControl>
-              <Textarea placeholder="Type your message here." {...field} />
+              <Textarea {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -97,7 +94,7 @@ const ContactForm = ({
     </form>
   </Form>
 );
-const Contact = ({ title, description, image }: ContactProps) => {
+const Contact = ({ heading, description, image }: ContactProps) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -107,6 +104,11 @@ const Contact = ({ title, description, image }: ContactProps) => {
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
+
+  let imageUrl = "";
+  if (image) {
+    imageUrl = urlFor(image).url();
+  }
 
   const handleSubmit = async (data: any) => {
     setLoading(true);
@@ -134,17 +136,18 @@ const Contact = ({ title, description, image }: ContactProps) => {
         <div className="grid grid-cols-12 md:gap-24">
           <div className="col-span-6">
             <Image
-              {...image}
+              src={imageUrl}
+              alt={heading}
               width={400}
               height={400}
               className="z-10 aspect-video object-cover object-center w-full"
             />
           </div>
           <div className="col-span-6">
-            <Heading level="h2" className="font-bold">
-              {title}
+            <Heading level="h2" className="font-bold mb-4">
+              {heading}
             </Heading>
-            <p className="text-xl mb-4">{description}</p>
+            <p className=" mb-4">{description}</p>
             {!success ? (
               <ContactForm
                 form={form}

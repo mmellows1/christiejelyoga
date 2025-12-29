@@ -5,23 +5,29 @@ import { Heading } from "@/components/ui/heading";
 import Link from "next/link";
 
 interface SloganProps {
-  title: string;
+  heading: string;
   slogan: string;
+  cta?: {
+    label?: string;
+    href?: string;
+    newTab?: boolean;
+  };
 }
-
-const Slogan = ({ title, slogan }: SloganProps) => {
+const Slogan = ({ heading, slogan, cta, ...rest }: SloganProps) => {
   return (
-    <Section>
+    <Section {...rest}>
       <Container className="flex flex-col items-center gap-4">
         <Heading level="h1" className="text-center">
-          {title}
+          {heading}
         </Heading>
         <p className="text-center">{slogan}</p>
-        <Button asChild variant="link">
-          <Link href="/schedule">
-            New to Mission? Try one of our introductory offers
-          </Link>
-        </Button>
+        {cta && cta.href && (
+          <Button asChild variant="link">
+            <Link target={cta?.newTab ? "_blank" : "_self"} href={cta?.href}>
+              {cta?.label}
+            </Link>
+          </Button>
+        )}
       </Container>
     </Section>
   );

@@ -6,11 +6,17 @@ import { TextImage } from "@/blocks/text-image";
 export default function Home() {
   return (
     <main className="justify-center bg-slate-50 font-sans dark:bg-black">
+      <Hero
+        image={{
+          src: "/yoga-1.jpg",
+          alt: "Christie Jel Yoga",
+        }}
+      />
       <Slogan
-        title="Nisi eu veniam officia anim minim ipsum esse dolor"
+        heading="Nisi eu veniam officia anim minim ipsum esse dolor"
         slogan="Minim cillum laborum exercitation aliqua. Amet reprehenderit irure ea veniam aliqua ex voluptate elit aliqua magna ullamco. Nisi consequat sunt officia aute mollit pariatur Lorem id qui ipsum cillum est. Voluptate dolor elit commodo reprehenderit veniam laboris reprehenderit consequat labore occaecat duis. Nostrud aliquip culpa pariatur dolor amet sunt sunt ea nulla aute incididunt."
       />
-      <Services
+      {/* <Services
         services={[
           {
             title: "Commodo quis eiusmod non ea laborum tempor",
@@ -47,7 +53,7 @@ export default function Home() {
       <TextImage
         image={{ alt: "yoga", src: "/yoga-2.jpg" }}
         orientation="left"
-      />
+      /> */}
     </main>
   );
 }

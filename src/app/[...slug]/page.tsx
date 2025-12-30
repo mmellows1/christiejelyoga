@@ -3,6 +3,7 @@ import { Hero } from "@/blocks/hero";
 import { Services } from "@/blocks/services";
 import { Slogan } from "@/blocks/slogan";
 import { TextImage } from "@/blocks/text-image";
+import { TwoColumnContent } from "@/blocks/two-column-content";
 import { sanityFetch } from "@/sanity/live";
 import { defineQuery, SanityDocument } from "next-sanity";
 import { redirect } from "next/navigation";
@@ -21,11 +22,10 @@ const blockMapper: Record<string, any> = {
   textMediaBlock: TextImage,
   servicesBlock: Services,
   contactFormBlock: Contact,
+  twoColumnContentBlock: TwoColumnContent,
 };
 
 const BlockRenderer = (content: any) => {
-  console.log();
-
   if (!content?.content) return;
 
   return content.content.map((c: SanityDocument) => {

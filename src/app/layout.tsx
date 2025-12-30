@@ -46,17 +46,6 @@ export default async function RootLayout({
               logo={config.logo}
               menu={config.menu}
             />
-            <TwoColumnContent
-              content={
-                "Non esse est elit Lorem veniam aliquip officia nostrud in pariatur labore cillum. Voluptate ad labore sint exercitation eu tempor labore aliquip culpa dolore aliquip velit esse. Culpa aliquip excepteur et incididunt. Commodo aute dolor aliqua voluptate voluptate elit id. Duis commodo dolore minim ad exercitation. Deserunt aliquip deserunt nisi sint do exercitation mollit Lorem sunt. Aliquip laboris aliquip in eiusmod dolor sit occaecat Lorem."
-              }
-              cta={{
-                label: "Commodo quis eiusmod non ea laborum tempor",
-                href: "#",
-                newTab: true,
-              }}
-              heading="Aliquip do reprehenderit ut aliqua ullamco elit ea enim anim ex tempor anim aliquip cupidatat."
-            />
             {children}
             <SanityLive />
             {(await draftMode()).isEnabled && <VisualEditing />}

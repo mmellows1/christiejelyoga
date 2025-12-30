@@ -20,12 +20,14 @@ const blockMapper: Record<string, any> = {
   sloganBlock: Slogan,
   textMediaBlock: TextImage,
   servicesBlock: Services,
-  contactFormBlock: Contact
+  contactFormBlock: Contact,
 };
 
 const BlockRenderer = (content: any) => {
   console.log();
-  // return 1;
+
+  if (!content?.content) return;
+
   return content.content.map((c: SanityDocument) => {
     const Component = blockMapper[c._type] || null;
 

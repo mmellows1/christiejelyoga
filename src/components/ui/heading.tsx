@@ -1,15 +1,54 @@
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 
-interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+const headingVariants = cva("font-sans font-bold", {
+  variants: {
+    level: {
+      h1: "text-5xl",
+      h2: "text-4xl",
+      h3: "text-3xl",
+      h4: "text-2xl",
+      h5: "text-xl",
+      h6: "text-lg",
+    },
+  },
+  defaultVariants: {
+    level: "h3",
+  },
+});
+
+/* ------------------------------------------------------------
+ * Polymorphic types
+ * ------------------------------------------------------------ */
+
+type HeadingElement = React.ElementType;
+
+type HeadingProps<T extends HeadingElement = "h3"> = {
+  as?: T;
   children: React.ReactNode;
-  level: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-}
-const Heading = ({ children, className, level }: HeadingProps) => {
-  const Tag = level;
+  className?: string;
+} & VariantProps<typeof headingVariants> &
+  Omit<React.ComponentPropsWithoutRef<T>, "as" | "className" | "children">;
+
+/* ------------------------------------------------------------
+ * Component
+ * ------------------------------------------------------------ */
+
+const Heading = <T extends HeadingElement = "h3">({
+  as,
+  level = "h3",
+  className,
+  children,
+  ...props
+}: HeadingProps<T>) => {
+  const tag = as || level;
+  const Component = tag ?? "h3";
+
   return (
-    <Tag className={clsx("font-sans font-bold text-3xl", className)}>
+    <Component className={clsx(headingVariants({ tag }), className)} {...props}>
       {children}
-    </Tag>
+    </Component>
   );
 };
 

@@ -7,6 +7,9 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import { Geist, Geist_Mono } from "next/font/google";
 import { draftMode } from "next/headers";
 import "./globals.css";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/ui/sidebar-cn";
+import { TwoColumnContent } from "@/blocks/two-column-content";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,11 +38,31 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header title={config.title} logo={config.logo} menu={config.menu} />
-        {children}
-        <SanityLive />
-        {(await draftMode()).isEnabled && <VisualEditing />}
-        <Footer />
+        <SidebarProvider>
+          <AppSidebar />
+          <main className="w-full">
+            <Header
+              title={config.title}
+              logo={config.logo}
+              menu={config.menu}
+            />
+            <TwoColumnContent
+              content={
+                "Non esse est elit Lorem veniam aliquip officia nostrud in pariatur labore cillum. Voluptate ad labore sint exercitation eu tempor labore aliquip culpa dolore aliquip velit esse. Culpa aliquip excepteur et incididunt. Commodo aute dolor aliqua voluptate voluptate elit id. Duis commodo dolore minim ad exercitation. Deserunt aliquip deserunt nisi sint do exercitation mollit Lorem sunt. Aliquip laboris aliquip in eiusmod dolor sit occaecat Lorem."
+              }
+              cta={{
+                label: "Commodo quis eiusmod non ea laborum tempor",
+                href: "#",
+                newTab: true,
+              }}
+              heading="Aliquip do reprehenderit ut aliqua ullamco elit ea enim anim ex tempor anim aliquip cupidatat."
+            />
+            {children}
+            <SanityLive />
+            {(await draftMode()).isEnabled && <VisualEditing />}
+            <Footer />
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   );

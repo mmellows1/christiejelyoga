@@ -1,6 +1,8 @@
 import { CallToActionBanner } from "@/blocks/call-to-action-banner";
 import { Contact } from "@/blocks/contact";
+import { Gallery } from "@/blocks/gallery";
 import { Hero } from "@/blocks/hero";
+import { LargeCallToAction } from "@/blocks/large-call-to-action";
 import { OnDemand } from "@/blocks/on-demand";
 import { Services } from "@/blocks/services";
 import { TextImage } from "@/blocks/text-image";
@@ -24,6 +26,8 @@ const blockMapper: Record<string, any> = {
   contactFormBlock: Contact,
   twoColumnContentBlock: TwoColumnContent,
   onDemandBlock: OnDemand,
+  galleryBlock: Gallery,
+  largeCallToActionBlock: LargeCallToAction,
 };
 
 const BlockRenderer = (content: any) => {

@@ -15,7 +15,7 @@ const Header = ({ title, menu, logo }: HeaderProps) => {
   console.log(menu);
   return (
     <header className="p-8 py-4 bg-slate-100/80 fixed top-0 left-0 z-90 w-full grid grid-cols-12 items-center">
-      <div className="gap-4 col-span-2 flex justify-start">
+      <div className="gap-4 col-span-4 flex justify-start">
         <ul className="flex gap-4">
           {menu.map((item, index) => (
             <li key={index}>
@@ -26,7 +26,7 @@ const Header = ({ title, menu, logo }: HeaderProps) => {
           ))}
         </ul>
       </div>
-      <div className="flex justify-center col-span-8">
+      <div className="flex justify-center col-span-4">
         <Heading level="h1">
           <Link href="/">
             {logo ? (
@@ -37,7 +37,7 @@ const Header = ({ title, menu, logo }: HeaderProps) => {
           </Link>
         </Heading>
       </div>
-      <div className="gap-4 col-span-2 flex justify-end">
+      <div className="gap-4 col-span-4 flex justify-end">
         <Button asChild variant="outline">
           <Link href="/contact#contact">Contact me</Link>
         </Button>

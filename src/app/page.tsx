@@ -1,7 +1,5 @@
+import { CallToActionBanner } from "@/blocks/call-to-action-banner";
 import { Hero } from "@/blocks/hero";
-import { Services } from "@/blocks/services";
-import { Slogan } from "@/blocks/slogan";
-import { TextImage } from "@/blocks/text-image";
 
 export default function Home() {
   return (
@@ -11,10 +9,6 @@ export default function Home() {
           src: "/yoga-1.jpg",
           alt: "Christie Jel Yoga",
         }}
-      />
-      <Slogan
-        heading="Nisi eu veniam officia anim minim ipsum esse dolor"
-        slogan="Minim cillum laborum exercitation aliqua. Amet reprehenderit irure ea veniam aliqua ex voluptate elit aliqua magna ullamco. Nisi consequat sunt officia aute mollit pariatur Lorem id qui ipsum cillum est. Voluptate dolor elit commodo reprehenderit veniam laboris reprehenderit consequat labore occaecat duis. Nostrud aliquip culpa pariatur dolor amet sunt sunt ea nulla aute incididunt."
       />
       {/* <Services
         services={[

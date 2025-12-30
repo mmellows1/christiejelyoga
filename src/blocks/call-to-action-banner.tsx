@@ -4,25 +4,30 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import Link from "next/link";
 
-interface SloganProps {
+interface CallToActionBannerProps {
   heading: string;
-  slogan: string;
+  description: string;
   cta?: {
     label?: string;
     href?: string;
     newTab?: boolean;
   };
 }
-const Slogan = ({ heading, slogan, cta, ...rest }: SloganProps) => {
+const CallToActionBanner = ({
+  heading,
+  description,
+  cta,
+  ...rest
+}: CallToActionBannerProps) => {
   return (
     <Section {...rest}>
-      <Container className="flex flex-col items-center gap-4">
+      <Container className="flex flex-col items-center gap-4 ">
         <Heading level="h1" className="text-center">
           {heading}
         </Heading>
-        <p className="text-center">{slogan}</p>
+        <p className="text-center">{description}</p>
         {cta && cta.href && (
-          <Button asChild variant="link">
+          <Button asChild>
             <Link target={cta?.newTab ? "_blank" : "_self"} href={cta?.href}>
               {cta?.label}
             </Link>
@@ -33,4 +38,4 @@ const Slogan = ({ heading, slogan, cta, ...rest }: SloganProps) => {
   );
 };
 
-export { Slogan };
+export { CallToActionBanner };

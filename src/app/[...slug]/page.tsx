@@ -1,12 +1,12 @@
+import { CallToActionBanner } from "@/blocks/call-to-action-banner";
 import { Contact } from "@/blocks/contact";
 import { Hero } from "@/blocks/hero";
+import { OnDemand } from "@/blocks/on-demand";
 import { Services } from "@/blocks/services";
-import { Slogan } from "@/blocks/slogan";
 import { TextImage } from "@/blocks/text-image";
 import { TwoColumnContent } from "@/blocks/two-column-content";
 import { sanityFetch } from "@/sanity/live";
 import { defineQuery, SanityDocument } from "next-sanity";
-import { redirect } from "next/navigation";
 
 const query = defineQuery(
   `*[_type == "pages" && slug.current == $slug][0] {
@@ -18,11 +18,12 @@ const query = defineQuery(
 );
 
 const blockMapper: Record<string, any> = {
-  sloganBlock: Slogan,
+  callToActionBannerBlock: CallToActionBanner,
   textMediaBlock: TextImage,
   servicesBlock: Services,
   contactFormBlock: Contact,
   twoColumnContentBlock: TwoColumnContent,
+  onDemandBlock: OnDemand,
 };
 
 const BlockRenderer = (content: any) => {

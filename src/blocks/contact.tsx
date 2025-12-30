@@ -139,7 +139,7 @@ const Contact = ({ heading, description, image }: ContactProps) => {
               alt={heading}
               width={400}
               height={400}
-              className="z-10 aspect-video object-cover object-center w-full"
+              className="z-10 aspect-square object-cover object-center w-full"
             />
           </div>
           <div className="col-span-6">

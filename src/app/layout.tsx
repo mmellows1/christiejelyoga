@@ -1,15 +1,14 @@
 import { Footer } from "@/components/ui/footer";
 import { Header } from "@/components/ui/header";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/ui/sidebar-cn";
 import { getSiteConfig } from "@/lib/api";
 import { SanityLive } from "@/sanity/live";
 import type { Metadata } from "next";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { Geist, Geist_Mono } from "next/font/google";
-import { draftMode } from "next/headers";
+import { cookies, draftMode } from "next/headers";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/ui/sidebar-cn";
-import { TwoColumnContent } from "@/blocks/two-column-content";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,13 +31,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const config = await getSiteConfig();
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SidebarProvider>
+        <SidebarProvider defaultOpen={defaultOpen}>
           <AppSidebar />
           <main className="w-full">
             <Header

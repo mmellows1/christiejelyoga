@@ -38,7 +38,7 @@ const Services = async ({ heading, services }: ServicesProps) => {
             {heading}
           </Heading>
         )}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {resolvedServices.map((service, index) => {
             const imageUrl = urlFor(service?.image).url();
 

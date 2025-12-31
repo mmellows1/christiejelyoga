@@ -13,11 +13,11 @@ interface LargeCallToActionProps {
 
 const LargeCallToAction = ({ cta }: LargeCallToActionProps) => {
   return (
-    <Section>
+    <Section background="light">
       <Container>
         <div className="flex justify-center">
           {cta && cta.href && cta.href !== "" && (
-            <Button asChild className="px-12 py-8 text-xl">
+            <Button asChild size="lg">
               <Link href={cta.href} target={cta?.newTab ? "_blank" : "_self"}>
                 {cta.label}
               </Link>

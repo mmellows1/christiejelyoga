@@ -3,7 +3,8 @@ import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { SquareArrowOutUpRight } from "lucide-react";
-import { PortableText, PortableTextBlock } from "next-sanity";
+import { PortableTextBlock } from "next-sanity";
+import { PortableText } from "@/components/ui/portable-text";
 import Link from "next/link";
 import { vi } from "zod/v4/locales";
 
@@ -21,13 +22,13 @@ interface TwoColumnContentProps {
 const getLayout = (layout: string) => {
   switch (layout) {
     case "4-8":
-      return ["col-span-4", "col-span-8"];
+      return ["md:col-span-4", "md:col-span-8"];
     case "6-6":
-      return ["col-span-6", "col-span-6"];
+      return ["md:col-span-6", "md:col-span-6"];
     case "5-2-5":
-      return ["col-span-5", "col-start-8 col-span-5"];
+      return ["md:col-span-5", "md:col-start-8 md:col-span-5"];
     default:
-      return ["col-span-4", "col-span-8"];
+      return ["md:col-span-4", "md:col-span-8"];
   }
 };
 
@@ -41,7 +42,7 @@ const TwoColumnContent = ({
   return (
     <Section>
       <Container>
-        <div className="grid grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24 gap-4">
           <div className={leftSpan}>
             <PortableText value={leftContent} />
           </div>
@@ -49,7 +50,7 @@ const TwoColumnContent = ({
             <PortableText value={rightContent} />
           </div>
           {cta && cta.href && cta.href !== "" && (
-            <div className="col-span-10 col-start-2 flex justify-center">
+            <div className="md:col-span-10 md:col-start-2 flex justify-center">
               <Button asChild className="w-full">
                 <Link
                   target={cta?.newTab ? "_blank" : "_self"}

@@ -14,6 +14,7 @@ import {
 import { Heading } from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Typography } from "@/components/ui/typography";
 import { urlFor } from "@/sanity/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -132,8 +133,8 @@ const Contact = ({ heading, description, image }: ContactProps) => {
   return (
     <Section className="bg-white">
       <Container>
-        <div className="grid grid-cols-12 md:gap-24">
-          <div className="col-span-6">
+        <div className="grid grid-cols-12 gap-4 md:gap-24">
+          <div className="col-span-12 md:col-span-6">
             <Image
               src={imageUrl}
               alt={heading}
@@ -142,11 +143,11 @@ const Contact = ({ heading, description, image }: ContactProps) => {
               className="z-10 aspect-square object-cover object-center w-full"
             />
           </div>
-          <div className="col-span-6">
+          <div className="col-span-12 md:col-span-6">
             <Heading level="h2" className="font-bold mb-4">
               {heading}
             </Heading>
-            <p className=" mb-4">{description}</p>
+            <Typography className=" mb-4">{description}</Typography>
             {!success ? (
               <ContactForm
                 form={form}
@@ -154,7 +155,9 @@ const Contact = ({ heading, description, image }: ContactProps) => {
                 loading={loading}
               />
             ) : (
-              <p className="text-xl text-green-600 font-bold">Email sent!</p>
+              <Typography className="text-xl text-green-600 font-bold">
+                Email sent!
+              </Typography>
             )}
           </div>
         </div>

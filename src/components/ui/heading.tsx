@@ -5,12 +5,12 @@ import clsx from "clsx";
 const headingVariants = cva("font-sans font-bold", {
   variants: {
     level: {
-      h1: "text-5xl",
-      h2: "text-4xl",
-      h3: "text-3xl",
-      h4: "text-2xl",
-      h5: "text-xl",
-      h6: "text-lg",
+      h1: "text-3xl md:text-5xl",
+      h2: "text-2xl md:text-4xl",
+      h3: "text-xl md:text-3xl",
+      h4: "text-lg md:text-2xl",
+      h5: "text-md md:text-xl",
+      h6: "text-md md:text-lg",
     },
   },
   defaultVariants: {

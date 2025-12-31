@@ -12,8 +12,8 @@ interface GalleryProps {
 const Gallery = ({ images }: GalleryProps) => {
   const imageUrls = images.map((image) => urlFor(image).url());
   return (
-    <Section className="md:py-0">
-      <div className="grid grid-cols-4">
+    <Section className="md:py-0 !py-0 !px-0 md:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-4">
         {imageUrls.map((image) => (
           <Image
             loading="lazy"

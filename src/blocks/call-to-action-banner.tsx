@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
+import { Typography } from "@/components/ui/typography";
 import Link from "next/link";
 
 interface CallToActionBannerProps {
@@ -25,7 +26,7 @@ const CallToActionBanner = ({
         <Heading level="h1" className="text-center">
           {heading}
         </Heading>
-        <p className="text-center">{description}</p>
+        <Typography className="text-center">{description}</Typography>
         {cta && cta.href && (
           <Button asChild>
             <Link target={cta?.newTab ? "_blank" : "_self"} href={cta?.href}>

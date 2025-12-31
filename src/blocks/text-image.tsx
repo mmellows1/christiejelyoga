@@ -1,24 +1,24 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { PortableText } from "@/components/ui/portable-text";
 import { urlFor } from "@/sanity/image";
 import clsx from "clsx";
-import { PortableText, type PortableTextBlock } from "next-sanity";
+import { type PortableTextBlock } from "next-sanity";
 import Image from "next/image";
 
 interface TextImageProps {
   imageFirst: boolean;
-  content: PortableTextBlock;
+  content: PortableTextBlock[];
   image: any;
 }
 
 const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
-  const imageUrl = urlFor(image.asset).url()
-
+  const imageUrl = urlFor(image.asset).url();
 
   return (
     <Section>
       <Container>
-        <div className="grid grid-cols-12 md:gap-24">
+        <div className="grid grid-cols-12 md:gap-24 gap-4">
           <div
             className={clsx(
               "col-span-12 md:col-span-6",
@@ -26,7 +26,7 @@ const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
             )}
           >
             <Image
-              src={imageUrl} 
+              src={imageUrl}
               alt={image.asset.alt || "image"}
               width={550}
               height={240}

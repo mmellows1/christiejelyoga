@@ -1,5 +1,6 @@
 import { Footer } from "@/components/ui/footer";
 import { Header } from "@/components/ui/header";
+import { MomoSchedule } from "@/components/ui/momo-schedule";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/ui/sidebar-cn";
 import { getSiteConfig } from "@/lib/api";
@@ -9,6 +10,8 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cookies, draftMode } from "next/headers";
 import "./globals.css";
+import "./vendor/momo-yoga.css";
+import { SocialMediaBanner } from "@/blocks/social-media-banner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,6 +51,7 @@ export default async function RootLayout({
               menu={config.menu}
             />
             {children}
+
             <SanityLive />
             {(await draftMode()).isEnabled && <VisualEditing />}
             <Footer />

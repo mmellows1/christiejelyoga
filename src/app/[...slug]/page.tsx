@@ -4,7 +4,9 @@ import { Gallery } from "@/blocks/gallery";
 import { Hero } from "@/blocks/hero";
 import { LargeCallToAction } from "@/blocks/large-call-to-action";
 import { OnDemand } from "@/blocks/on-demand";
+import { Schedule } from "@/blocks/schedule";
 import { Services } from "@/blocks/services";
+import { SocialMediaBanner } from "@/blocks/social-media-banner";
 import { TextImage } from "@/blocks/text-image";
 import { TwoColumnContent } from "@/blocks/two-column-content";
 import { sanityFetch } from "@/sanity/live";
@@ -28,6 +30,8 @@ const blockMapper: Record<string, any> = {
   onDemandBlock: OnDemand,
   galleryBlock: Gallery,
   largeCallToActionBlock: LargeCallToAction,
+  scheduleBlock: Schedule,
+  SocialMediaBannerBlock: SocialMediaBanner,
 };
 
 const BlockRenderer = (content: any) => {

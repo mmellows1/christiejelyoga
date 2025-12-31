@@ -31,9 +31,9 @@ export function YoutubeDialog({ videoId }: YoutubeDialogProps) {
         <Image
           src={imageUrl}
           alt={videoId || "video"}
-          width={550}
-          height={240}
-          className="w-full"
+          width={720}
+          height={720}
+          className="w-full object-cover aspect-video"
         />
         <Button asChild className="rounded-full size-24">
           <PlayIcon className="absolute text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />

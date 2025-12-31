@@ -42,11 +42,14 @@ const Heading = <T extends HeadingElement = "h3">({
   children,
   ...props
 }: HeadingProps<T>) => {
-  const tag = as || level;
+  const tag = as || level || "h3";
   const Component = tag ?? "h3";
 
   return (
-    <Component className={clsx(headingVariants({ tag }), className)} {...props}>
+    <Component
+      className={clsx(headingVariants({ level }), className)}
+      {...props}
+    >
       {children}
     </Component>
   );

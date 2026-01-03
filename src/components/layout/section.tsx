@@ -3,42 +3,61 @@ import clsx from "clsx";
 
 interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  background?: "default" | "dark" | "light";
-  padding?: "default" | "none" | "sm" | "md" | "lg";
+  background: string;
+  padding: {
+    top: string;
+    bottom: string;
+  };
 }
 
-const sectionVariants = cva("", {
+const sectionVariants = cva("group group-section", {
   variants: {
     background: {
       default: "bg-white",
-      dark: "bg-dark",
-      light: "bg-light",
+      none: "bg-transparent",
+      white: "bg-white",
+      brand: "bg-brand",
     },
-    padding: {
-      default: "py-8 px-8 md:px-0 md:py-12",
-      none: "py-0 px-0 md:px-0 md:py-0",
-      sm: "py-8 px-8 md:px-0 md:py-16",
-      md: "py-8 px-8 md:px-0 md:py-32",
-      lg: "py-8 px-8 md:px-0 md:py-48",
+    paddingTop: {
+      default: "pt-8 px-8 md:px-0 md:pt-12",
+      none: "pt-0 px-0 md:px-0 md:pt-0",
+      sm: "pt-8 px-8 md:px-0 md:pt-16",
+      md: "pt-8 px-8 md:px-0 md:pt-32",
+      lg: "pt-8 px-8 md:px-0 md:pt-48",
+    },
+    paddingBottom: {
+      default: "pb-8 px-8 md:px-0 md:pb-12",
+      none: "pb-0 px-0 md:px-0 md:pb-0",
+      sm: "pb-8 px-8 md:px-0 md:pb-16",
+      md: "pb-8 px-8 md:px-0 md:pb-32",
+      lg: "pb-8 px-8 md:px-0 md:pb-48",
     },
   },
   defaultVariants: {
     background: "default",
-    padding: "default",
+    paddingTop: "default",
+    paddingBottom: "default",
   },
 });
 
 const Section = ({
   children,
   background = "default",
-  padding = "default",
+  padding = { bottom: "md", top: "md" },
   className,
   ...props
 }: SectionProps) => {
   return (
     <section
-      className={clsx(sectionVariants({ background, padding }), className)}
       {...props}
+      className={clsx(
+        sectionVariants({
+          background,
+          paddingTop: padding.top,
+          paddingBottom: padding.bottom,
+        } as any),
+        className
+      )}
     >
       {children}
     </section>

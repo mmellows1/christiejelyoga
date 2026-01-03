@@ -1,47 +1,23 @@
-import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
-import { Heading } from "@/components/ui/heading";
+import { PortableText } from "@/components/ui/portable-text";
 import { YoutubeDialog } from "@/components/ui/youtube-dialog";
-import { PlayCircle, PlayIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { PortableTextBlock } from "next-sanity";
 
 interface OnDemandProps {
-  heading: string;
+  content: PortableTextBlock[];
   videoId?: string;
-  cta?: {
-    label?: string;
-    href?: string;
-    newTab?: boolean;
-  };
 }
-const OnDemand = ({ heading, videoId, cta }: OnDemandProps) => {
+const OnDemand = ({ content, videoId }: OnDemandProps) => {
   return (
-    <Section>
-      <Container>
-        <div className="grid grid-cols-12 md:gap-24 gap-4 items-center">
-          <div className="col-span-12 md:col-span-6">
-            <div className="relative">
-              <YoutubeDialog videoId={videoId || ""} />
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-5 md:col-start-8">
-            <Heading className="mb-4">{heading}</Heading>
-            {cta && cta.href && cta.href !== "" && (
-              <Button asChild>
-                <Link
-                  target={cta?.newTab ? "_blank" : "_self"}
-                  href={cta?.href}
-                >
-                  {cta?.label}
-                </Link>
-              </Button>
-            )}
-          </div>
+    <div className="grid grid-cols-12 md:gap-24 gap-4 items-center">
+      <div className="col-span-12 md:col-span-6">
+        <div className="relative">
+          <YoutubeDialog videoId={videoId || ""} />
         </div>
-      </Container>
-    </Section>
+      </div>
+      <div className="col-span-12 md:col-span-5 md:col-start-8">
+        <PortableText value={content} />
+      </div>
+    </div>
   );
 };
 

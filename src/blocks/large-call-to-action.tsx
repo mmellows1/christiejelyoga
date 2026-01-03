@@ -13,19 +13,15 @@ interface LargeCallToActionProps {
 
 const LargeCallToAction = ({ cta }: LargeCallToActionProps) => {
   return (
-    <Section background="light">
-      <Container>
-        <div className="flex justify-center">
-          {cta && cta.href && cta.href !== "" && (
-            <Button asChild size="lg">
-              <Link href={cta.href} target={cta?.newTab ? "_blank" : "_self"}>
-                {cta.label}
-              </Link>
-            </Button>
-          )}
-        </div>
-      </Container>
-    </Section>
+    <div className="flex justify-center">
+      {cta && cta.href && cta.href !== "" && (
+        <Button asChild size="lg" variant="outline">
+          <Link href={cta.href} target={cta?.newTab ? "_blank" : "_self"}>
+            {cta.label}
+          </Link>
+        </Button>
+      )}
+    </div>
   );
 };
 

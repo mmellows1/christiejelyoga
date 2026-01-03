@@ -1,12 +1,7 @@
-import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
-import { Heading } from "@/components/ui/heading";
-import { SquareArrowOutUpRight } from "lucide-react";
-import { PortableTextBlock } from "next-sanity";
 import { PortableText } from "@/components/ui/portable-text";
+import { PortableTextBlock } from "next-sanity";
 import Link from "next/link";
-import { vi } from "zod/v4/locales";
 
 interface TwoColumnContentProps {
   leftContent: PortableTextBlock[];
@@ -40,30 +35,25 @@ const TwoColumnContent = ({
 }: TwoColumnContentProps) => {
   const [leftSpan, rightSpan] = getLayout(layout);
   return (
-    <Section>
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24 gap-4">
-          <div className={leftSpan}>
-            <PortableText value={leftContent} />
-          </div>
-          <div className={rightSpan}>
-            <PortableText value={rightContent} />
-          </div>
-          {cta && cta.href && cta.href !== "" && (
-            <div className="md:col-span-10 md:col-start-2 flex justify-center">
-              <Button asChild className="w-full">
-                <Link
-                  target={cta?.newTab ? "_blank" : "_self"}
-                  href={cta?.href}
-                >
-                  {cta?.label}
-                </Link>
-              </Button>
-            </div>
-          )}
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-12 md:gap-24 gap-4">
+        <div className={leftSpan}>
+          <PortableText value={leftContent} />
         </div>
-      </Container>
-    </Section>
+        <div className={rightSpan}>
+          <PortableText value={rightContent} />
+        </div>
+        {cta && cta.href && cta.href !== "" && (
+          <div className="md:col-span-10 md:col-start-2 flex justify-center">
+            <Button asChild className="w-full">
+              <Link target={cta?.newTab ? "_blank" : "_self"} href={cta?.href}>
+                {cta?.label}
+              </Link>
+            </Button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

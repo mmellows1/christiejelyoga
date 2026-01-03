@@ -5,13 +5,7 @@ import { MomoSchedule } from "@/components/ui/momo-schedule";
 interface ScheduleProps {}
 
 const Schedule = ({}: ScheduleProps) => {
-  return (
-    <Section>
-      <Container>
-        <MomoSchedule scheduleUrl="momoyoga.com/christiejelyoga" />
-      </Container>
-    </Section>
-  );
+  return <MomoSchedule scheduleUrl="momoyoga.com/christiejelyoga" />;
 };
 
 export { Schedule };

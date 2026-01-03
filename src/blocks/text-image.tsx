@@ -13,37 +13,33 @@ interface TextImageProps {
 }
 
 const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
-  const imageUrl = urlFor(image.asset).url();
-
   return (
-    <Section>
-      <Container>
-        <div className="grid grid-cols-12 md:gap-24 gap-4">
-          <div
-            className={clsx(
-              "col-span-12 md:col-span-6",
-              imageFirst ? "order-2" : "order-1"
-            )}
-          >
-            <Image
-              src={imageUrl}
-              alt={image.asset.alt || "image"}
-              width={550}
-              height={240}
-              className="aspect-video w-full object-cover"
-            />
-          </div>
-          <div
-            className={clsx(
-              "col-span-12 md:col-span-6",
-              imageFirst ? "order-1" : "order-2"
-            )}
-          >
-            <PortableText value={content} />
-          </div>
-        </div>
-      </Container>
-    </Section>
+    <div className="grid grid-cols-12 md:gap-24 gap-4">
+      <div
+        className={clsx(
+          "col-span-12 md:col-span-6",
+          imageFirst ? "order-2" : "order-1"
+        )}
+      >
+        {image && image.asset && (
+          <Image
+            src={urlFor(image?.asset).url()}
+            alt={image.asset.alt || "image"}
+            width={550}
+            height={240}
+            className="aspect-video w-full object-cover"
+          />
+        )}
+      </div>
+      <div
+        className={clsx(
+          "col-span-12 md:col-span-6",
+          imageFirst ? "order-1" : "order-2"
+        )}
+      >
+        <PortableText value={content} />
+      </div>
+    </div>
   );
 };
 

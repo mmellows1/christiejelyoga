@@ -14,27 +14,25 @@ interface SocialMediaBannerProps {
 
 const SocialMediaBanner = ({ heading, links }: SocialMediaBannerProps) => {
   return (
-    <Section>
-      <Container>
-        <Heading className="text-center mb-4" level="h2">
-          {heading}
-        </Heading>
-        <div className="flex items-center justify-center gap-4">
-          <Link
-            href="/"
-            className="size-18 rounded-full bg-purple-400 text-white flex items-center justify-center"
-          >
-            <Instagram size={36} />
-          </Link>
-          <Link
-            href="/"
-            className="size-18 rounded-full bg-green-400 text-white flex items-center justify-center"
-          >
-            <MessageCircle size={36} />
-          </Link>
-        </div>
-      </Container>
-    </Section>
+    <>
+      <Heading className="text-center mb-4" level="h2">
+        {heading}
+      </Heading>
+      <div className="flex items-center justify-center gap-4">
+        <Link
+          href="/"
+          className="size-18 rounded-full bg-purple-400 text-white flex items-center justify-center"
+        >
+          <Instagram size={36} />
+        </Link>
+        <Link
+          href="/"
+          className="size-18 rounded-full bg-green-400 text-white flex items-center justify-center"
+        >
+          <MessageCircle size={36} />
+        </Link>
+      </div>
+    </>
   );
 };
 

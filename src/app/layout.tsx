@@ -1,9 +1,9 @@
 import { Footer } from "@/components/ui/footer";
 import { Header } from "@/components/ui/header";
-import { MomoSchedule } from "@/components/ui/momo-schedule";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/ui/sidebar-cn";
 import { getSiteConfig } from "@/lib/api";
+import { ConfigProvider } from "@/providers/config";
 import { SanityLive } from "@/sanity/live";
 import type { Metadata } from "next";
 import { VisualEditing } from "next-sanity/visual-editing";
@@ -11,7 +11,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { cookies, draftMode } from "next/headers";
 import "./globals.css";
 import "./vendor/momo-yoga.css";
-import { SocialMediaBanner } from "@/blocks/social-media-banner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,26 +37,28 @@ export default async function RootLayout({
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
 
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <SidebarProvider defaultOpen={defaultOpen}>
-          <AppSidebar />
-          <main className="w-full">
-            <Header
-              title={config.title}
-              logo={config.logo}
-              menu={config.menu}
-            />
-            {children}
-
-            <SanityLive />
-            {(await draftMode()).isEnabled && <VisualEditing />}
-            <Footer />
-          </main>
-        </SidebarProvider>
-      </body>
-    </html>
+    <ConfigProvider value={config}>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <AppSidebar />
+            <main className="w-full">
+              <Header
+                title={config?.title}
+                logo={config?.logo}
+                menu={config?.menu}
+                ctas={config?.ctas}
+              />
+              {children}
+              <SanityLive />
+              {(await draftMode()).isEnabled && <VisualEditing />}
+              <Footer />
+            </main>
+          </SidebarProvider>
+        </body>
+      </html>
+    </ConfigProvider>
   );
 }

@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
 
-const typographyVariants = cva("font-sans font-bold", {
+const typographyVariants = cva("font-sans text-body font-thin", {
   variants: {
     tag: {
       p: "text-sm md:text-base",

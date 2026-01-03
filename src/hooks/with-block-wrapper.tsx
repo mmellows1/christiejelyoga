@@ -6,12 +6,12 @@ interface WithBlockWrapperOptions {
   [key: string]: any; // Optional options you may want to pass in
 }
 
-const withBlockWrapper = (
+const withBlockWrapper = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
   options?: WithBlockWrapperOptions
 ) => {
   const Wrapper: React.FC<P> = (props) => {
-    const { background, padding, ...rest } = props;
+    const { background, padding, ...rest } = props as any;
 
     const sanitizedBackground = background
       ? cleanString(background)

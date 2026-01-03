@@ -3,8 +3,8 @@ import clsx from "clsx";
 
 interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  background: string;
-  padding: {
+  background?: string;
+  padding?: {
     top: string;
     bottom: string;
   };

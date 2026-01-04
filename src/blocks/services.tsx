@@ -46,14 +46,18 @@ const Services = async ({ heading, services }: ServicesProps) => {
         {services &&
           services.length > 0 &&
           resolvedServices.map((service, index) => {
-            const imageUrl = urlFor(service?.image).url();
+            const imageUrl = service?.image ? urlFor(service?.image).url() : "";
 
             return (
               <Card key={index} className="w-full">
                 <CardHeader>
                   <Image
                     src={imageUrl}
-                    alt={service?.image.alt || heading}
+                    alt={
+                      service?.image.alt ||
+                      heading ||
+                      "christie jel yoga service"
+                    }
                     width={720}
                     height={194}
                   />

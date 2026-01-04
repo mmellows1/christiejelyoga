@@ -18,7 +18,7 @@ const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
       <div
         className={clsx(
           "col-span-12 md:col-span-6",
-          imageFirst ? "order-2" : "order-1"
+          imageFirst ? "order-1" : "order-2"
         )}
       >
         {image && image.asset && (
@@ -34,7 +34,7 @@ const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
       <div
         className={clsx(
           "col-span-12 md:col-span-6",
-          imageFirst ? "order-1" : "order-2"
+          imageFirst ? "order-2" : "order-1"
         )}
       >
         <PortableText value={content} />

@@ -7,7 +7,11 @@ interface GalleryProps {
 }
 
 const Gallery = ({ images }: GalleryProps) => {
-  const imageUrls = images.map((image: any) => urlFor(image).url());
+  const imageUrls =
+    images && images.length > 0
+      ? images.map((image: any) => (image.asset ? urlFor(image).url() : ""))
+      : [];
+
   return (
     <Section
       className="md:py-0 !py-0 !px-0 md:px-0"

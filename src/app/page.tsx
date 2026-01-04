@@ -1,10 +1,10 @@
 import { Hero } from "@/blocks/hero";
 import { getPage, getPageById, getSiteConfig } from "@/lib/api";
 import { BlockRenderer } from "@/lib/block-registry";
+import { AOSProvider } from "@/providers/aos";
 
 export default async function Home() {
   const config = await getSiteConfig();
-  console.log(config);
   const page = await getPageById(config.frontpage._ref);
 
   return (
@@ -15,7 +15,9 @@ export default async function Home() {
           alt: "Christie Jel Yoga",
         }}
       />
-      <BlockRenderer content={page.content} />
+      <AOSProvider>
+        <BlockRenderer content={page.content} />
+      </AOSProvider>
     </main>
   );
 }

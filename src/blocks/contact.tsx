@@ -1,7 +1,5 @@
 "use client";
 
-import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,7 +9,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Heading } from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { PortableText } from "@/components/ui/portable-text";
 import { Textarea } from "@/components/ui/textarea";

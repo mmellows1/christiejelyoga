@@ -36,7 +36,9 @@ export const BlockRenderer = (content: any) => {
     }
 
     if (Component) {
-      return <Component {...c} key={c._key} />;
+      return (
+        <Component {...c} key={c._key} animation={c.animation || "none"} />
+      );
     }
   });
 };

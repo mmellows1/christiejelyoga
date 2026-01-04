@@ -18,7 +18,6 @@ const CallToActionBanner = ({
   heading,
   description,
   cta,
-  ...rest
 }: CallToActionBannerProps) => {
   return (
     <div className="flex flex-col items-center gap-4">

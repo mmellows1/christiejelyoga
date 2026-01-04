@@ -11,21 +11,24 @@ const withBlockWrapper = <P extends object>(
   options?: WithBlockWrapperOptions
 ) => {
   const Wrapper: React.FC<P> = (props) => {
-    const { background, padding, ...rest } = props as any;
+    const { background, padding, animation, ...rest } = props as any;
 
     const sanitizedBackground = background
       ? cleanString(background)
       : "default";
+
     const [paddingTop, paddingBottom] = [
       padding?.top ? cleanString(padding.top) : "default",
       padding?.bottom ? cleanString(padding.bottom) : "default",
     ];
+
+    const sanitizedAnimation = cleanString(animation);
     return (
       <Section
         background={sanitizedBackground}
         padding={{ top: paddingTop, bottom: paddingBottom }}
       >
-        <Container>
+        <Container data-aos={sanitizedAnimation}>
           <WrappedComponent {...rest} {...options} />
         </Container>
       </Section>

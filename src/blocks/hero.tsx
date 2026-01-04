@@ -1,8 +1,4 @@
-import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
-import { Heading } from "@/components/ui/heading";
 import Image from "next/image";
-import Link from "next/link";
 
 interface HeroProps {
   image: {

@@ -67,20 +67,19 @@
   --brand: var(--primary);
   --link: var(--accent);
 
-  --background: #c3d9ad;
-  --foreground: #34402c;
+  --background: var(--primary);
+  --foreground: var(--secondary);
 
   --card: var(--secondary);
   --card-foreground: #34402c;
   --popover: var(--brand);
   --popover-foreground: #34402c;
-  --primary: #34402c;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: #34402c;
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent-foreground: #34402c;
+  --accent-foreground: var(--primary);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: var(--foreground);

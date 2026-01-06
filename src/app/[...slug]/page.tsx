@@ -21,7 +21,7 @@ export default async ({ params }: { params: Promise<{ slug: string[] }> }) => {
   }
 
   return (
-    <main className="justify-center bg-slate-50 font-sans dark:bg-black">
+    <main className="justify-center bg-slate-50  dark:bg-black">
       <Hero image={{ src: data.imageUrl, alt: data.title }} />
       <BlockRenderer content={data.content} />
     </main>

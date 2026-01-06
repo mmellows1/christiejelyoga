@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 
 const headingVariants = cva(
-  "font-bold group text-heading font-thin font-heading",
+  "font-heading text-heading group-[.bg-dark]:text-white",
   {
     variants: {
       level: {

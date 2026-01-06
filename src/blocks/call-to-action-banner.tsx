@@ -24,7 +24,7 @@ const CallToActionBanner = ({
       <Heading level="h2" className="text-center">
         {heading}
       </Heading>
-      <Typography className="text-center">{description}</Typography>
+      <Typography className="text-center mb-6">{description}</Typography>
       {cta && cta.href && (
         <Button asChild>
           <Link target={cta?.newTab ? "_blank" : "_self"} href={cta?.href}>

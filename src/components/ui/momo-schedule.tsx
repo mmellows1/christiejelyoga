@@ -34,7 +34,7 @@ const MomoSchedule = ({ scheduleUrl }: MomoScheduleProps) => {
   return (
     <div
       ref={containerRef}
-      className="momoyoga-schedule rouned-md border border-border p-8 font-bold [&_.momoyoga-date]:text-2xl"
+      className="momoyoga-schedule"
       data-momo-schedule={scheduleUrl}
     />
   );

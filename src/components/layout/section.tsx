@@ -17,6 +17,8 @@ const sectionVariants = cva("group group-section", {
       none: "bg-transparent",
       white: "bg-white",
       brand: "bg-brand",
+      caramel: "bg-accent bg-dark",
+      "soft-gray": "bg-secondary",
     },
     paddingTop: {
       default: "pt-8 px-8 md:px-0 md:pt-12",

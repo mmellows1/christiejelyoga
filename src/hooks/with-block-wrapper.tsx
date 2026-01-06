@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { cleanString } from "@/lib/helpers";
+import { cn } from "@/lib/utils";
 
 interface WithBlockWrapperOptions {
   [key: string]: any; // Optional options you may want to pass in
@@ -11,7 +12,13 @@ const withBlockWrapper = <P extends object>(
   options?: WithBlockWrapperOptions
 ) => {
   const Wrapper: React.FC<P> = (props) => {
-    const { background, padding, animation, ...rest } = props as any;
+    const {
+      background,
+      isFluid = false,
+      padding,
+      animation,
+      ...rest
+    } = props as any;
 
     const sanitizedBackground = background
       ? cleanString(background)
@@ -28,7 +35,10 @@ const withBlockWrapper = <P extends object>(
         background={sanitizedBackground}
         padding={{ top: paddingTop, bottom: paddingBottom }}
       >
-        <Container data-aos={sanitizedAnimation}>
+        <Container
+          data-aos={sanitizedAnimation}
+          className={cn({ "max-w-full md:px-12 px-4": isFluid })}
+        >
           <WrappedComponent {...rest} {...options} />
         </Container>
       </Section>

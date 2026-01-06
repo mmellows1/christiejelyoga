@@ -20,16 +20,11 @@ const SocialMediaBanner = ({ heading, links }: SocialMediaBannerProps) => {
       </Heading>
       <div className="flex items-center justify-center gap-4">
         <Link
-          href="/"
+          href="https://www.instagram.com/christiejelyoga/"
           className="size-18 rounded-full bg-purple-400 text-white flex items-center justify-center"
         >
           <Instagram size={36} />
-        </Link>
-        <Link
-          href="/"
-          className="size-18 rounded-full bg-green-400 text-white flex items-center justify-center"
-        >
-          <MessageCircle size={36} />
+          <span className="sr-only">Instagram</span>
         </Link>
       </div>
     </>

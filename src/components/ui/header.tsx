@@ -29,7 +29,7 @@ const Header = ({ title, menu, logo, ctas }: HeaderProps) => {
         </ul>
       </div>
       <div className="flex justify-start md:justify-center md:col-span-4">
-        <Heading level="h1" as="h4">
+        <span className="text-xl md:text-2xl font-heading">
           <Link href="/">
             {logo ? (
               <Image src={logo} alt={title} width={120} height={40} />
@@ -37,7 +37,7 @@ const Header = ({ title, menu, logo, ctas }: HeaderProps) => {
               title
             )}
           </Link>
-        </Heading>
+        </span>
       </div>
       <div className="gap-4 col-span-4 hidden md:flex justify-end">
         {ctas &&

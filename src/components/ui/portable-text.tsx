@@ -44,7 +44,7 @@ const PortableText = ({ value }: PortableTextProps) => {
             </Heading>
           ),
           normal: ({ children }) => (
-            <Typography className="mb-4">{children}</Typography>
+            <Typography className="mb-4 font-test">{children}</Typography>
           ),
           blockquote: ({ children }) => (
             <Typography
@@ -63,10 +63,7 @@ const PortableText = ({ value }: PortableTextProps) => {
             </List>
           ),
           number: ({ children }) => (
-            <List
-              tag="ol"
-              className="mt-xl pl-4.5 list-decimal space-y-2 mb-4  text-body"
-            >
+            <List tag="ol" className="mt-xl pl-4.5 list-decimal space-y-2 mb-4">
               {children}
             </List>
           ),

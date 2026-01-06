@@ -15,7 +15,11 @@ const LargeCallToAction = ({ cta }: LargeCallToActionProps) => {
   return (
     <div className="flex justify-center">
       {cta && cta.href && cta.href !== "" && (
-        <Button asChild size="lg" variant="outline">
+        <Button
+          asChild
+          size="lg"
+          className="w-full text-center whitespace-pre text-wrap whitespace-normal"
+        >
           <Link href={cta.href} target={cta?.newTab ? "_blank" : "_self"}>
             {cta.label}
           </Link>

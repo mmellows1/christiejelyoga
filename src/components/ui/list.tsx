@@ -1,18 +1,21 @@
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
 
-const listVariants = cva("font-sans font-bold group font-thin", {
-  variants: {
-    tag: {
-      ul: "text-sm md:text-base",
-      ol: "text-sm md:text-base",
+const listVariants = cva(
+  "text-body group group-[.bg-dark]:text-white  group-[.bg-brand]:text-black",
+  {
+    variants: {
+      tag: {
+        ul: "text-sm md:text-base",
+        ol: "text-sm md:text-base",
+      },
+      variant: {
+        default: "list-disc",
+        checked: "list-check",
+      },
     },
-    variant: {
-      default: "list-disc",
-      checked: "list-check",
-    },
-  },
-});
+  }
+);
 
 const List = ({ tag, as, className, variant, children, ...props }: any) => {
   const Component = tag ?? "ul";

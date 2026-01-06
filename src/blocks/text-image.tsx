@@ -14,7 +14,7 @@ interface TextImageProps {
 
 const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
   return (
-    <div className="grid grid-cols-12 md:gap-24 gap-4">
+    <div className="grid grid-cols-12 md:gap-4 relative">
       <div
         className={clsx(
           "col-span-12 md:col-span-6",
@@ -37,7 +37,9 @@ const TextImage = ({ imageFirst, image, content }: TextImageProps) => {
           imageFirst ? "order-1" : "order-2"
         )}
       >
-        <PortableText value={content} />
+        <div className="-left-12 md:relative top-4 p-12 bg-secondary z-20 md:w-[calc(100%+48px)]">
+          <PortableText value={content} />
+        </div>
       </div>
     </div>
   );

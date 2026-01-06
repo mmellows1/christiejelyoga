@@ -4,7 +4,6 @@ import nodemailer from "nodemailer";
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    console.log(data);
     const transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
       port: 587,
@@ -22,11 +21,7 @@ export async function POST(request: Request) {
       html: `<p>${data.message}</p>`,
     });
 
-    console.log("Message sent: %s", info.messageId);
-
     const previewUrl = nodemailer.getTestMessageUrl(info);
-
-    console.log("Preview URL: %s", previewUrl);
 
     return NextResponse.json({ previewUrl, info });
     // await submit(request);
@@ -34,8 +29,6 @@ export async function POST(request: Request) {
   } catch (reason) {
     // const message =
     //   reason instanceof Error ? reason.message : "Unexpected error";
-
     // return new Response(message, { status: 500 });
-    console.log("hi there");
   }
 }

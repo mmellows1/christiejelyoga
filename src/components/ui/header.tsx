@@ -15,7 +15,7 @@ interface HeaderProps {
 
 const Header = ({ title, menu, logo, ctas }: HeaderProps) => {
   return (
-    <header className="p-8 py-4 bg-slate-100/80 sticky top-0 left-0 z-50 w-full flex gap-4 md:gap-0 md:grid md:grid-cols-12 items-center">
+    <header className="p-8 py-6 bg-white sticky top-0 left-0 z-50 w-full flex gap-4 md:gap-0 md:grid md:grid-cols-12 items-center border-b border-b-border">
       <div className="gap-4 col-span-4 flex justify-start">
         <SidebarTrigger className="md:hidden" />
         <ul className="flex gap-4 md:flex hidden">
@@ -43,11 +43,7 @@ const Header = ({ title, menu, logo, ctas }: HeaderProps) => {
         {ctas &&
           ctas.length > 0 &&
           ctas.map((cta: CTAType, index: number) => (
-            <Button
-              key={cta?.href ? cta?.href + index : index}
-              asChild
-              variant="outline"
-            >
+            <Button key={cta?.href ? cta?.href + index : index} asChild>
               <Link href={cta?.href || "/"}>{cta?.label}</Link>
             </Button>
           ))}

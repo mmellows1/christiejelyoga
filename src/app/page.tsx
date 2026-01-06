@@ -1,14 +1,13 @@
 import { Hero } from "@/blocks/hero";
-import { getPage, getPageById, getSiteConfig } from "@/lib/api";
+import { getPageById, getSiteConfig } from "@/lib/api";
 import { BlockRenderer } from "@/lib/block-registry";
 
 export default async function Home() {
   const config = await getSiteConfig();
-  console.log(config);
   const page = await getPageById(config.frontpage._ref);
 
   return (
-    <main className="justify-center bg-slate-50 font-sans dark:bg-black">
+    <main className="justify-center bg-slate-50  dark:bg-black">
       <Hero
         image={{
           src: "/yoga-1.jpg",

@@ -9,6 +9,17 @@ import type { Metadata } from "next";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { cookies, draftMode } from "next/headers";
 import "./globals.css";
+import { Baskervville, Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const baskervville = Baskervville({
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +37,7 @@ export default async function RootLayout({
 
   return (
     <ConfigProvider value={config}>
-      <html lang="en">
+      <html lang="en" className={cn(baskervville.className, inter.className)}>
         <body className={`antialiased font-base`}>
           <SidebarProvider defaultOpen={defaultOpen}>
             <AppSidebar />

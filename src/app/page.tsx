@@ -8,12 +8,7 @@ export default async function Home() {
 
   return (
     <main className="justify-center bg-slate-50  dark:bg-black">
-      <Hero
-        image={{
-          src: "/yoga-1.jpg",
-          alt: "Christie Jel Yoga",
-        }}
-      />
+      <Hero image={{ src: page.imageUrl, alt: page.title }} />
       <BlockRenderer content={page.content} />
     </main>
   );

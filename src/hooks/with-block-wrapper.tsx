@@ -9,7 +9,7 @@ interface WithBlockWrapperOptions {
 
 const withBlockWrapper = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
-  options?: WithBlockWrapperOptions
+  options?: WithBlockWrapperOptions,
 ) => {
   const Wrapper: React.FC<P> = (props) => {
     const { background, isFluid = false, padding, ...rest } = props as any;

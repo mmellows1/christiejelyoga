@@ -1,5 +1,6 @@
 import { CallToActionBanner } from "@/blocks/call-to-action-banner";
 import { Contact } from "@/blocks/contact";
+import { Content } from "@/blocks/content";
 import { Gallery } from "@/blocks/gallery";
 import { LargeCallToAction } from "@/blocks/large-call-to-action";
 import { OnDemand } from "@/blocks/on-demand";
@@ -12,6 +13,7 @@ import { withBlockWrapper } from "@/hooks/with-block-wrapper";
 import { SanityDocument } from "next-sanity";
 
 export const blockMapper: Record<string, any> = {
+  "block._contentBlock": withBlockWrapper(Content),
   "block._callToActionBannerBlock": withBlockWrapper(CallToActionBanner),
   "block._contactFormBlock": withBlockWrapper(Contact),
   "block._textMediaBlock": withBlockWrapper(TextImage),

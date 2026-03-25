@@ -1,3 +1,4 @@
+import { Content } from "@/blocks/content";
 import { Hero } from "@/blocks/hero";
 import { getPageById, getSiteConfig } from "@/lib/api";
 import { BlockRenderer } from "@/lib/block-registry";
